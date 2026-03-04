@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & Advice - Loving Homes Dog Hotel Hong Kong</title>
+    <meta name="description" content="Helpful guides, FAQs, and advice for dog boarding in Hong Kong. Learn how to prepare your dog for their stay.">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .help-hero {
+            background: linear-gradient(135deg, var(--bg-light), white);
+            padding: 60px 0;
+            text-align: center;
+            border-radius: var(--border-radius);
+            margin-bottom: 40px;
+        }
+        
+        .guide-section {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 50px;
+            margin-bottom: 50px;
+            box-shadow: var(--shadow);
+        }
+        
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .guide-card {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: var(--border-radius-sm);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .guide-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .guide-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .guide-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .guide-card p {
+            color: var(--text-soft);
+            font-size: 0.95rem;
+        }
+        
+        .checklist-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .checklist-box {
+            background: var(--bg-light);
+            padding: 40px;
+            border-radius: var(--border-radius);
+        }
+        
+        .checklist-box h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+        
+        .checklist-box ul {
+            list-style: none;
+        }
+        
+        .checklist-box li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .checklist-box li .check {
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .dont .check {
+            color: #e74c3c;
+        }
+        
+        .schedule-section {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            padding: 60px;
+            border-radius: var(--border-radius);
+            color: white;
+            margin: 50px 0;
+        }
+        
+        .schedule-section h2,
+        .schedule-section h3 {
+            color: white;
+        }
+        
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .time-block {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: var(--border-radius-sm);
+            backdrop-filter: blur(10px);
+        }
+        
+        .time-block .time {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .time-block .activity {
+            opacity: 0.9;
+        }
+        
+        .faq-category {
+            margin: 40px 0;
+        }
+        
+        .faq-category h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .faq-accordion {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .faq-question {
+            padding: 20px 30px;
+            background: var(--bg-white);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .faq-question:hover {
+            background: var(--bg-light);
+        }
+        
+        .faq-question.active {
+            border-bottom-color: var(--secondary);
+        }
+        
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+            background: var(--bg-light);
+        }
+        
+        .faq-answer.active {
+            padding: 20px 30px;
+            max-height: 500px;
+        }
+        
+        .toggle-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .faq-question.active .toggle-icon {
+            transform: rotate(45deg);
+        }
+        
+        .seasonal-tips {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .tip-card {
+            background: var(--bg-white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .tip-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .tip-card h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .download-section {
+            background: var(--bg-white);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border: 2px dashed var(--secondary);
+            margin: 50px 0;
+        }
+        
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .download-item {
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: var(--border-radius-sm);
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: all 0.3s;
+        }
+        
+        .download-item:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        .download-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 992px) {
+            .guide-grid,
+            .seasonal-tips,
+            .download-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .schedule-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .checklist-section,
+            .guide-grid,
+            .seasonal-tips,
+            .download-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .schedule-section {
+                padding: 40px 20px;
+            }
+        }
+        
+        .breadcrumb {
+            margin-bottom: 30px;
+            color: var(--text-soft);
+        }
+        
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <div class="logo-icon">🐾</div>
+                        <div class="logo-text">
+                            <h1>Loving Homes</h1>
+                            <p>Luxury Dog Hotel Hong Kong</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+                
+                <nav class="nav-menu" id="navMenu">
+                    <a href="index.html">Home</a>
+                    <a href="facilities.html">Facilities</a>
+                    <a href="packages.html">Packages</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="help.html" class="active">Help</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="book.html" class="book-btn">Book Now 📞</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- BREADCRUMB -->
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / Help & Advice
+            </div>
+        </div>
+
+        <!-- PAGE HEADER -->
+        <section class="help-hero">
+            <div class="container">
+                <h1>Help & Advice</h1>
+                <p style="font-size: 1.2rem; max-width: 700px; margin: 20px auto 0;">Everything you need to know about dog boarding in Hong Kong</p>
+            </div>
+        </section>
+
+        <!-- PACKAGE SELECTION GUIDE -->
+        <section class="guide-section">
+            <div class="container">
+                <h2>How to Choose the Right Package</h2>
+                <p>Consider your dog's age, energy level, and needs to find the perfect stay</p>
+                
+                <div class="guide-grid">
+                    <div class="guide-card">
+                        <div class="guide-icon">🐕</div>
+                        <h3>High Energy Dogs</h3>
+                        <p><strong>Recommended:</strong> Premium or Classic</p>
+                        <p>Active dogs need more walks and playtime. Premium offers 4 walks daily with private play areas.</p>
+                    </div>
+                    
+                    <div class="guide-card">
+                        <div class="guide-icon">🧓</div>
+                        <h3>Senior Dogs</h3>
+                        <p><strong>Recommended:</strong> Classic + Zen Zone</p>
+                        <p>Gentle walks, quiet relaxation areas, and extra comfort for older dogs.</p>
+                    </div>
+                    
+                    <div class="guide-card">
+                        <div class="guide-icon">🐶</div>
+                        <h3>First-Time Boarders</h3>
+                        <p><strong>Recommended:</strong> Day Package First</p>
+                        <p>Start with daycare to help your dog adjust before an overnight stay.</p>
+                    </div>
+                    
+                    <div class="guide-card">
+                        <div class="guide-icon">🎉</div>
+                        <h3>Special Occasions</h3>
+                        <p><strong>Recommended:</strong> Premium</p>
+                        <p>Birthday or celebration? Premium includes treats, daily photos, and extra pampering.</p>
+                    </div>
+                    
+                    <div class="guide-card">
+                        <div class="guide-icon">😌</div>
+                        <h3>Shy or Anxious Dogs</h3>
+                        <p><strong>Recommended:</strong> Classic with private add-ons</p>
+                        <p>Less group exposure, one-on-one attention, and quiet spaces.</p>
+                    </div>
+                    
+                    <div class="guide-card">
+                        <div class="guide-icon">👥</div>
+                        <h3>Multiple Dogs</h3>
+                        <p><strong>Recommended:</strong> Any package with sibling discount</p>
+                        <p>Dogs from same household can share a room at reduced rate.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHECKLIST SECTION -->
+        <section class="guide-section">
+            <div class="container">
+                <h2>First Time Boarding? Here's What You Need</h2>
+                
+                <div class="checklist-section">
+                    <div class="checklist-box">
+                        <h3><span class="check">✅</span> What to Bring</h3>
+                        <ul>
+                            <li><span class="check">✓</span> Vaccination records (rabies, DHPP, bordetella)</li>
+                            <li><span class="check">✓</span> Food in sealed container (enough for stay + 2 days)</li>
+                            <li><span class="check">✓</span> Medications with clear instructions</li>
+                            <li><span class="check">✓</span> Favorite toy or blanket</li>
+                            <li><span class="check">✓</span> Collar with ID tag</li>
+                            <li><span class="check">✓</span> Leash and harness</li>
+                            <li><span class="check">✓</span> Emergency contact numbers</li>
+                            <li><span class="check">✓</span> Treats (if your dog has favorites)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="checklist-box dont">
+                        <h3><span class="check">❌</span> What NOT to Bring</h3>
+                        <ul>
+                            <li><span class="check">✗</span> Rawhide chews</li>
+                            <li><span class="check">✗</span> Frayed or damaged toys</li>
+                            <li><span class="check">✗</span> Glass bowls</li>
+                            <li><span class="check">✗</span> Valuable items</li>
+                            <li><span class="check">✗</span> Large bags of food (we'll store properly)</li>
+                            <li><span class="check">✗</span> Electric items or heating pads</li>
+                            <li><span class="check">✗</span> Other pets</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DAILY SCHEDULE -->
+        <section class="schedule-section">
+            <div class="container">
+                <h2>A Day at Loving Homes</h2>
+                <p>Sample daily schedule (adjusted based on your dog's needs)</p>
+                
+                <div class="schedule-grid">
+                    <div class="time-block">
+                        <div class="time">7:00 AM</div>
+                        <div class="activity">Wake up & morning bathroom break</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">8:00 AM</div>
+                        <div class="activity">Breakfast served (your food or ours)</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">9:00 AM</div>
+                        <div class="activity">Morning walk or activity</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">10:30 AM</div>
+                        <div class="activity">Playtime (group or individual)</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">12:00 PM</div>
+                        <div class="activity">Lunch and rest period</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">2:00 PM</div>
+                        <div class="activity">Afternoon activity</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">3:30 PM</div>
+                        <div class="activity">Grooming / Training / Zen time</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">5:00 PM</div>
+                        <div class="activity">Evening walk</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">6:00 PM</div>
+                        <div class="activity">Dinner</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">7:30 PM</div>
+                        <div class="activity">Evening cuddles & TV time</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">9:00 PM</div>
+                        <div class="activity">Final bathroom break</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="time">10:00 PM</div>
+                        <div class="activity">Bedtime</div>
+                    </div>
+                </div>
+                
+                <p style="margin-top: 30px; opacity: 0.9;">* Schedule adjusts based on package and individual needs</p>
+            </div>
+        </section>
+
+        <!-- FAQ SECTION -->
+        <section class="guide-section">
+            <div class="container">
+                <h2>Frequently Asked Questions</h2>
+                
+                <div class="faq-category">
+                    <h3>Booking & Reservations</h3>
+                    
+                    <div class="faq-accordion">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            How far in advance should I book?
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            We recommend booking 2-4 weeks in advance for weekends and holidays. Weekdays can often be booked with 48 hours notice. For peak seasons (Chinese New Year, Christmas, summer holidays), book at least 1-2 months ahead.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-accordion">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            What is your cancellation policy?
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Free cancellation up to 48 hours before check-in. Cancellations within 48 hours incur a 50% charge. No-shows are charged in full. For extended stays (2+ weeks), 7 days notice required.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-accordion">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Can I book a custom package?
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Yes! Contact us to discuss your dog's specific needs. We offer custom packages for extended stays, senior dogs, puppies, medical needs, and special requirements. We'll create a personalized care plan and provide a quote within 24 hours.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-category">
+                    <h3>Health & Safety</h3>
+                    
+                    <div class="faq-accordion">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            What vaccines are required?
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Current rabies, DHPP (distemper, hepatitis, parainfluenza, parvovirus), and bordetella (kennel cough) vaccines are required. Proof must be provided at check-in. We recommend updating vaccines at least 1 week before stay.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-accordion">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            What if my dog needs medication?
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Our 24-hour vet team can administer medications at no extra cost. Please provide medications in original containers with clear instructions (dosage, time, method). We'll document each administration.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-accordion">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            What if my dog gets sick during their stay?
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Our 24-hour on-call vet handles all medical issues immediately. We contact you right away, explain the situation, and follow your instructions for treatment. For emergencies, we'll transport to our partner 24-hour animal hospital.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-category">
+                    <h3>During the Stay</h3>
+                    
+                    <div class="faq-accordion">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Can I visit during my dog's stay?
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            We find visits can be disruptive for dogs and may cause separation anxiety. Instead, we offer video calls and daily photo updates (Premium package). For extended stays (2+ weeks), we can arrange a mid-stay visit.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-accordion">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            How do I get daily updates?
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Premium package includes daily photos and videos via email or app. Classic package includes updates every 2 days. You can also purchase photo updates for any package ($15/day). Webcam access available for Premium guests.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-accordion">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Can siblings share a room?
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Yes! Dogs from the same household can share a room for a discounted rate (20% off for second dog). Contact us for pricing. We'll ensure they have enough space and can be together or separate as needed.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-category">
+                    <h3>Breeds & Special Needs</h3>
+                    
+                    <div class="faq-accordion">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Do you take large breeds like Dobermans?
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Absolutely! We love all breeds. Our facilities include extra-large rooms, orthopedic beds sized for large dogs, secure paddocks with 6-foot fencing, and staff trained in handling all breeds. We've boarded over 45 Dobermans in the past year with 100% satisfaction.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-accordion">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Do you accept unvaccinated puppies?
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Yes, with vet approval and proof of first vaccinations. Puppies have separate play areas from adult dogs, more frequent potty breaks, and gentle introduction to socializing. Ask about our Puppy Package.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-accordion">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            What about dogs with separation anxiety?
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            We're experienced with anxious dogs. We offer extra one-on-one attention, calming music, pheromone diffusers, and can arrange video calls. Let us know in advance so we can prepare a calm environment.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEASONAL TIPS -->
+        <section class="guide-section">
+            <div class="container">
+                <h2>Seasonal Care Tips for Hong Kong</h2>
+                
+                <div class="seasonal-tips">
+                    <div class="tip-card">
+                        <div class="tip-icon">☀️</div>
+                        <h4>Summer (May-Sep)</h4>
+                        <p>All outdoor activities in early morning/late evening</p>
+                        <p>Indoor play during peak heat</p>
+                        <p>Constant fresh water and cooling mats</p>
+                        <p>Booties for hot pavement</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-icon">🌧️</div>
+                        <h4>Typhoon Season</h4>
+                        <p>All dogs moved to interior safe rooms</p>
+                        <p>Storm anxiety protocols in place</p>
+                        <p>Calming music and extra comfort</p>
+                        <p>24-hour staffing during weather events</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-icon">❄️</div>
+                        <h4>Winter (Dec-Feb)</h4>
+                        <p>Underfloor heating activated</p>
+                        <p>Cozy blankets on all beds</p>
+                        <p>Shorter walks in cold weather</p>
+                        <p>Indoor play prioritized</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DOWNLOADABLE RESOURCES -->
+        <section class="download-section">
+            <div class="container">
+                <h2>Downloadable Resources</h2>
+                <p>Print these at home and bring them with you</p>
+                
+                <div class="download-grid">
+                    <a href="#" class="download-item">
+                        <div class="download-icon">📄</div>
+                        <h4>New Client Form</h4>
+                        <p>PDF - 2 pages</p>
+                    </a>
+                    <a href="#" class="download-item">
+                        <div class="download-icon">✅</div>
+                        <h4>What to Bring Checklist</h4>
+                        <p>PDF - 1 page</p>
+                    </a>
+                    <a href="#" class="download-item">
+                        <div class="download-icon">💊</div>
+                        <h4>Medication Form</h4>
+                        <p>PDF - 1 page</p>
+                    </a>
+                    <a href="#" class="download-item">
+                        <div class="download-icon">📊</div>
+                        <h4>Package Comparison</h4>
+                        <p>PDF - 1 page</p>
+                    </a>
+                    <a href="#" class="download-item">
+                        <div class="download-icon">🗺️</div>
+                        <h4>Facility Map</h4>
+                        <p>PDF - 1 page</p>
+                    </a>
+                    <a href="#" class="download-item">
+                        <div class="download-icon">📋</div>
+                        <h4>Feeding Instructions</h4>
+                        <p>PDF - 1 page</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section class="cta-section small">
+            <div class="container">
+                <h2>Still have questions?</h2>
+                <p>We're here to help! Contact us anytime.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary">Contact Us</a>
+                    <a href="book.html" class="btn btn-secondary">Book a Stay</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <!-- Same footer as other pages -->
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="logo" style="margin-bottom: 20px;">
+                        <div class="logo-icon" style="background: white; color: var(--primary);">🐾</div>
+                        <div class="logo-text">
+                            <h1 style="color: white;">Loving Homes</h1>
+                        </div>
+                    </div>
+                    <p>Luxury dog hotel in Hong Kong providing premium care, grooming, and accommodation for your furry family members since 2014.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="facilities.html">Facilities</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="help.html">Help & Advice</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Packages</h4>
+                    <ul>
+                        <li><a href="packages.html#premium">Premium</a></li>
+                        <li><a href="packages.html#classic">Classic</a></li>
+                        <li><a href="packages.html#day">Day Care</a></li>
+                        <li><a href="packages.html#custom">Custom</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>📞 +852 1234 5678</p>
+                    <p>✉️ info@lovinghomes.hk</p>
+                    <p>📍 Happy Valley, Hong Kong</p>
+                    <p><a href="contact.html" style="color: white; text-decoration: underline;">Get Directions</a></p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2026 Loving Homes. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        function toggleFAQ(element) {
+            element.classList.toggle('active');
+            const answer = element.nextElementSibling;
+            answer.classList.toggle('active');
+            
+            const icon = element.querySelector('.toggle-icon');
+            if (icon.textContent === '+') {
+                icon.textContent = '−';
+            } else {
+                icon.textContent = '+';
+            }
+        }
+    </script>
+</body>
+</html>
