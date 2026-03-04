@@ -70,3 +70,62 @@ function openLightbox(imageSrc, caption) {
     // This would be expanded for a real gallery
     console.log('Opening image:', imageSrc);
 }
+
+// Lightbox functionality
+let currentImageIndex = 0;
+const galleryItems = document.querySelectorAll('.gallery-item');
+const images = []; // Will store actual image paths
+
+// Collect all image sources
+galleryItems.forEach((item, index) => {
+    const img = item.querySelector('img');
+    if (img) {
+        images.push({
+            src: img.src,
+            caption: item.querySelector('.gallery-caption h4')?.innerText || 'Loving Homes',
+            alt: img.alt
+        });
+    }
+    
+    // Add click event
+    item.addEventListener('click', () => openLightbox(index));
+});
+
+function openLightbox(index) {
+    currentImageIndex = index;
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    
+    lightboxImg.src = images[index].src;
+    lightboxImg.alt = images[index].alt;
+    lightboxCaption.innerText = images[index].caption;
+    
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = ''; // Restore scrolling
+}
+
+function changeImage(direction) {
+    currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    
+    lightboxImg.src = images[currentImageIndex].src;
+    lightboxImg.alt = images[currentImageIndex].alt;
+    lightboxCaption.innerText = images[currentImageIndex].caption;
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox.classList.contains('active')) return;
+    
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') changeImage(-1);
+    if (e.key === 'ArrowRight') changeImage(1);
+});
