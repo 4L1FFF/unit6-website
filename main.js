@@ -129,3 +129,39 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') changeImage(-1);
     if (e.key === 'ArrowRight') changeImage(1);
 });
+
+// Mobile Menu Toggle - FIXED VERSION
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the menu button and navigation menu
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navMenu = document.getElementById('navMenu');
+    
+    // Check if elements exist
+    if (mobileMenuBtn && navMenu) {
+        console.log('Mobile menu found!'); // For debugging
+        
+        // Toggle menu when button is clicked
+        mobileMenuBtn.addEventListener('click', function(event) {
+            event.stopPropagation(); // Prevent event bubbling
+            navMenu.classList.toggle('active');
+            console.log('Menu toggled'); // For debugging
+        });
+        
+        // Close menu when clicking on a link
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!navMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+    } else {
+        console.log('Mobile menu elements not found!');
+    }
+});
